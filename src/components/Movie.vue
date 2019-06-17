@@ -142,7 +142,9 @@ export default {
         companiesList.forEach(company => {
           if (companies === undefined) {
             companies = company.name;
-          } else companies += ', ' + company.name;
+          } else {
+            companies += ', ' + company.name;
+          }
         })
         return companies;
       },
@@ -152,17 +154,19 @@ export default {
         countriesList.forEach(country => {
           if (countries === undefined) {
             countries = country.iso_3166_1;
-          } else countries += ', ' + country.iso_3166_1;
+          } else {
+            countries += ', ' + country.iso_3166_1;
+          }
         })
         return countries;
       },
       getRelatedMovies() {
         fetch(`https://api.themoviedb.org/3/movie/${ this.currentMovieId }/recommendations?api_key=8e7e66412d4fe189dbe2a28f0cd9a016&language=en-US&page=1`)
             .then(response => response.json())
-            .then(data => this.relatedMovies.push(data.results))
+            .then(data => this.relatedMovies.push(data.results));
       },
       getRelatedPoster(item) {
-          return `http://image.tmdb.org/t/p/w342/${ item.poster_path }`
+          return `http://image.tmdb.org/t/p/w342/${ item.poster_path }`;
       },
     },
     created() {

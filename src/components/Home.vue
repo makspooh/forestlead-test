@@ -98,24 +98,14 @@
     },
     methods: {
       getRelatedPoster(item) {
-          return `http://image.tmdb.org/t/p/w342/${ item.poster_path }`
+          return `http://image.tmdb.org/t/p/w342/${ item.poster_path }`;
       },
       getMovies() {
         fetch('https://api.themoviedb.org/3/movie/popular?api_key=8e7e66412d4fe189dbe2a28f0cd9a016&language=en-US&')
         .then(response => response.json())
         .then(data => {
-          this.movies = data.results
+          this.movies = data.results;
         })
-      },
-      getCountries(countriesList) {
-        let countries;
-        
-        countriesList.forEach(country => {
-          if (countries === undefined) {
-            countries = country.iso_3166_1;
-          } else countries += ', ' + country.iso_3166_1;
-        })
-        return countries;
       }
     },
     created() {
@@ -125,7 +115,7 @@
       search() {
         fetch(`https://api.themoviedb.org/3/search/movie?api_key=8e7e66412d4fe189dbe2a28f0cd9a016&language=en-US&query=${ this.search }&page=1&include_adult=false`)
           .then(response => response.json())
-          .then(data => this.findedMovies = data.results)
+          .then(data => this.findedMovies = data.results);
       }
     }
   }
